@@ -1,11 +1,11 @@
-package com.example.newsnow.ui.data.db
+package com.example.newsnow.data.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.newsnow.ui.data.entity.Article
+import com.example.newsnow.data.entity.Article
 
 @Database(
     entities = [Article::class],

@@ -1,7 +1,7 @@
-package com.example.newsnow.ui.data.api
+package com.example.newsnow.data.api
 
-import com.example.newsnow.ui.data.entity.NewsResponse
-import com.example.newsnow.ui.util.Constants.Companion.API_KEY
+import com.example.newsnow.data.entity.NewsResponse
+import com.example.newsnow.util.Constants.Companion.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

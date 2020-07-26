@@ -1,4 +1,4 @@
-package com.example.newsnow.ui.util
+package com.example.newsnow.util
 
 class Constants {
     companion object {

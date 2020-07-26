@@ -1,6 +1,4 @@
-package com.example.newsnow.ui.data.entity
-
-import com.example.newsnow.ui.data.entity.Article
+package com.example.newsnow.data.entity
 
 data class NewsResponse(
     val articles: List<Article>,

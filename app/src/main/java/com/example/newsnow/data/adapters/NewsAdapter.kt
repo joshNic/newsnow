@@ -1,4 +1,4 @@
-package com.example.newsnow.ui.data.adapters
+package com.example.newsnow.data.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.newsnow.R
-import com.example.newsnow.ui.data.entity.Article
+import com.example.newsnow.data.entity.Article
 import kotlinx.android.synthetic.main.item_article_preview.view.*
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {

@@ -1,8 +1,8 @@
-package com.example.newsnow.ui.data.db
+package com.example.newsnow.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.newsnow.ui.data.entity.Article
+import com.example.newsnow.data.entity.Article
 
 @Dao
 interface ArticleDao {

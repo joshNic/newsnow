@@ -1,8 +1,8 @@
-package com.example.newsnow.ui.data.repository
+package com.example.newsnow.data.repository
 
-import com.example.newsnow.ui.data.api.RetrofitInstance
-import com.example.newsnow.ui.data.db.ArticleDatabase
-import com.example.newsnow.ui.data.entity.Article
+import com.example.newsnow.data.api.RetrofitInstance
+import com.example.newsnow.data.db.ArticleDatabase
+import com.example.newsnow.data.entity.Article
 
 class NewsRepository(
     val db: ArticleDatabase

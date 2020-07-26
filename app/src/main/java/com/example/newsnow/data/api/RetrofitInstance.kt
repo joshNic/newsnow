@@ -1,6 +1,6 @@
-package com.example.newsnow.ui.data.api
+package com.example.newsnow.data.api
 
-import com.example.newsnow.ui.util.Constants.Companion.BASE_URL
+import com.example.newsnow.util.Constants.Companion.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

@@ -1,4 +1,4 @@
-package com.example.newsnow.ui.data.entity
+package com.example.newsnow.data.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

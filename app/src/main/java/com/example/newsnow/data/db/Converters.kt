@@ -1,7 +1,7 @@
-package com.example.newsnow.ui.data.db
+package com.example.newsnow.data.db
 
 import androidx.room.TypeConverter
-import com.example.newsnow.ui.data.entity.Source
+import com.example.newsnow.data.entity.Source
 
 class Converters {
     @TypeConverter
