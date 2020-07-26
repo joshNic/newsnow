@@ -1,4 +1,4 @@
-package com.example.newsnow.fragments
+package com.example.newsnow.ui.fragments
 
 import androidx.lifecycle.ViewModel
 

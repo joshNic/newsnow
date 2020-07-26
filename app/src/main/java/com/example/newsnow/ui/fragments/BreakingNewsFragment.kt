@@ -1,4 +1,4 @@
-package com.example.newsnow.fragments
+package com.example.newsnow.ui.fragments
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -8,24 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.newsnow.R
 
-class SearchNewsFragment : Fragment() {
+class BreakingNewsFragment : Fragment() {
 
     companion object {
-        fun newInstance() = SearchNewsFragment()
+        fun newInstance() = BreakingNewsFragment()
     }
 
-    private lateinit var viewModel: SearchNewsViewModel
+    private lateinit var viewModel: BreakingNewsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_search_news, container, false)
+        return inflater.inflate(R.layout.fragment_breaking_news, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(SearchNewsViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(BreakingNewsViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
