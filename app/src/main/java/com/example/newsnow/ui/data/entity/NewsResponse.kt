@@ -1,4 +1,4 @@
-package com.example.newsnow.ui.data
+package com.example.newsnow.ui.data.entity
 
 import com.example.newsnow.ui.data.entity.Article
 

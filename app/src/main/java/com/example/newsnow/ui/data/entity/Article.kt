@@ -1,12 +1,14 @@
 package com.example.newsnow.ui.data.entity
 
 import androidx.room.Entity
-import com.example.newsnow.ui.data.Source
+import androidx.room.PrimaryKey
 
 @Entity(
     tableName = "articles"
 )
 data class Article(
+    @PrimaryKey(autoGenerate = true)
+    var id: Int? = null,
     val author: String,
     val content: String,
     val description: String,

@@ -1,4 +1,4 @@
-package com.example.newsnow.ui.data
+package com.example.newsnow.ui.data.entity
 
 data class Source(
     val id: Any,
