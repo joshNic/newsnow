@@ -20,7 +20,7 @@ class SearchNewsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.search_news_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_search_news, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
