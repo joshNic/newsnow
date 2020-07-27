@@ -20,7 +20,9 @@ import com.example.newsnow.ui.NewsViewModel
 import com.example.newsnow.util.Constants.Companion.QUERY_PAGE_SIZE
 import com.example.newsnow.util.Constants.Companion.SEARCH_NEWS_TIME_DELAY
 import com.example.newsnow.util.Resource
+import kotlinx.android.synthetic.main.fragment_breaking_news.*
 import kotlinx.android.synthetic.main.fragment_search_news.*
+import kotlinx.android.synthetic.main.fragment_search_news.paginationProgressBar
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
@@ -53,7 +55,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
             job = MainScope().launch {
                 delay(SEARCH_NEWS_TIME_DELAY)
                 editable?.let {
-                    if(editable.toString().isNotEmpty()) {
+                    if (editable.toString().isNotEmpty()) {
                         viewModel.searchNews(editable.toString())
                     }
                 }
@@ -61,13 +63,16 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
         }
 
         viewModel.searchNews.observe(viewLifecycleOwner, Observer { response ->
-            when(response) {
+            when (response) {
                 is Resource.Success -> {
                     hideProgressBar()
                     response.data?.let { newsResponse ->
                         newsAdapter.differ.submitList(newsResponse.articles.toList())
                         val totalPages = newsResponse.totalResults / QUERY_PAGE_SIZE + 2
                         isLastPage = viewModel.searchNewsPage == totalPages
+                        if (isLastPage) {
+                            rvBreakingNews.setPadding(0, 0, 0, 0)
+                        }
                     }
                 }
                 is Resource.Error -> {
@@ -112,17 +117,15 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
             val isTotalMoreThanVisible = totalItemCount >= QUERY_PAGE_SIZE
             val shouldPaginate = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning &&
                     isTotalMoreThanVisible && isScrolling
-            if(shouldPaginate) {
+            if (shouldPaginate) {
                 viewModel.searchNews(etSearch.text.toString())
                 isScrolling = false
-            } else {
-                rvSearchNews.setPadding(0, 0, 0, 0)
             }
         }
 
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             super.onScrollStateChanged(recyclerView, newState)
-            if(newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+            if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
                 isScrolling = true
             }
         }
