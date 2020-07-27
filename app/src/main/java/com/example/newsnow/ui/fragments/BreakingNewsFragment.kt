@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsnow.R
 import com.example.newsnow.data.adapters.NewsAdapter
@@ -23,7 +24,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     }
 
     lateinit var viewModel: NewsViewModel
-     lateinit var newsAdapter:NewsAdapter
+    lateinit var newsAdapter: NewsAdapter
 
     val TAG = "BreakingNewsFragment"
 
@@ -32,18 +33,27 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         viewModel = (activity as NewsActivity).viewModel
         setupRecyclerView()
 
+        newsAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("article", it)
+            }
+            findNavController().navigate(
+                R.id.action_breakingNewsFragment_to_articleFragment, bundle
+            )
+        }
+
         viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response ->
-            when(response) {
+            when (response) {
                 is Resource.Success -> {
                     hideProgressBar()
-                    Log.i("data",response.data.toString())
+                    Log.i("data", response.data.toString())
                     response.data?.let { newsResponse ->
                         newsAdapter.differ.submitList(newsResponse.articles)
                     }
                 }
                 is Resource.Error -> {
                     hideProgressBar()
-                    Log.i("data",response.message)
+                    Log.i("data", response.message)
                     response.message?.let { message ->
                         Log.e(TAG, "An error occured: $message")
                     }
@@ -55,23 +65,25 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         })
     }
 
-    private fun hideProgressBar(){
+    private fun hideProgressBar() {
         paginationProgressBar.visibility = View.INVISIBLE
     }
-    private fun showProgressBar(){
+
+    private fun showProgressBar() {
         paginationProgressBar.visibility = View.VISIBLE
     }
-//    override fun onActivityCreated(savedInstanceState: Bundle?) {
+
+    //    override fun onActivityCreated(savedInstanceState: Bundle?) {
 //        super.onActivityCreated(savedInstanceState)
 //        viewModel = ViewModelProviders.of(this).get(BreakingNewsViewModel::class.java)
 //        // TODO: Use the ViewModel
 //    }
-    private fun setupRecyclerView(){
-    newsAdapter = NewsAdapter()
-    rvBreakingNews.apply {
-        adapter = newsAdapter
-        layoutManager = LinearLayoutManager(activity)
+    private fun setupRecyclerView() {
+        newsAdapter = NewsAdapter()
+        rvBreakingNews.apply {
+            adapter = newsAdapter
+            layoutManager = LinearLayoutManager(activity)
+        }
     }
-}
 
 }
