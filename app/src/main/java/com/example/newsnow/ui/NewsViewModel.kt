@@ -8,7 +8,6 @@ import android.net.NetworkCapabilities.*
 import android.os.Build
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.newsnow.NewsApplication
 import com.example.newsnow.data.entity.Article
@@ -61,6 +60,9 @@ class NewsViewModel(
         }
         return Resource.Error(response.message())
     }
+
+
+
 
     private fun handleSearchNewsResponse(response: Response<NewsResponse>) : Resource<NewsResponse> {
         if(response.isSuccessful) {
